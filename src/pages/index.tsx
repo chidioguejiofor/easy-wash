@@ -1,22 +1,27 @@
-import UnprotectedPages from "./UnprotectedPages";
-import { convertRoutesToComponents } from "helpers/pageParser";
-import ProtectedPages from "./ProtectedPages";
+import React, { lazy, Suspense } from "react";
+import Spinner from "components/shared/loading/Spinner";
 
-const ENTRY_PAGES: PageType[] = [
-  {
-    path: "/user",
-    component: ProtectedPages,
-    exact: false,
-  },
-  {
-    path: "/",
-    component: UnprotectedPages,
-    exact: false,
-  },
-];
+const UnprotectedPages = lazy(() => import("./UnprotectedPages"));
+const ProtectedPages = lazy(() => import("./ProtectedPages"));
 
 const Pages = () => {
-  return convertRoutesToComponents(ENTRY_PAGES);
+  const loadingUserData = false;
+
+  if (loadingUserData) {
+    return <Spinner info="Loading User data" />;
+  }
+
+  const userIsLoggedIn = false;
+
+  if (userIsLoggedIn) {
+    return <ProtectedPages />;
+  }
+
+  return (
+    <Suspense fallback={<Spinner info="Loading pages" />}>
+      {userIsLoggedIn ? <ProtectedPages /> : <UnprotectedPages />}
+    </Suspense>
+  );
 };
 
 export default Pages;

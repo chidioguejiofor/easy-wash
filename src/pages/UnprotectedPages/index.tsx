@@ -16,8 +16,8 @@ const UNPROTECTED_PAGES: PageType[] = [
   },
 ];
 
-const Pages = () => {
+const UnprotectedPages = () => {
   return convertRoutesToComponents(UNPROTECTED_PAGES);
 };
 
-export default Pages;
+export default UnprotectedPages;
