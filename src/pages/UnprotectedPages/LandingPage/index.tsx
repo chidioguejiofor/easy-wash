@@ -3,14 +3,7 @@ import Button from "components/shared/controls/Button";
 import LandingPageLayout from "components/layouts/LandingPageLayout";
 
 function LadingPage() {
-  return (
-    <div>
-      <LandingPageLayout></LandingPageLayout>
-      <div>
-        <Button>Here goes</Button>
-      </div>
-    </div>
-  );
+  return <LandingPageLayout />;
 }
 
 export default LadingPage;

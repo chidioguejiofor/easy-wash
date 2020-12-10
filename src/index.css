@@ -2,13 +2,14 @@
 
 /* universal css */
 body {
-  margin: 0;
-  padding: 0;
-  background: #FFF;
-  color: #53627C;
+ 
   font-size: 16px;
+  background: #FFF;
+
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
